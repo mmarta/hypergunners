@@ -28,6 +28,16 @@
             <map var-name="mapAlienDiverFarLeftB" left="4" top="3" width="1" height="1"/>
             <map var-name="mapAlienDiverFarRightA" left="5" top="3" width="1" height="1"/>
             <map var-name="mapAlienDiverFarRightB" left="6" top="3" width="1" height="1"/>
+
+            <map var-name="mapAlienKillNearA" left="7" top="3" width="1" height="1"/>
+            <map var-name="mapAlienKillNearB" left="8" top="3" width="1" height="1"/>
+            <map var-name="mapAlienKillNearC" left="9" top="3" width="1" height="1"/>
+            <map var-name="mapAlienKillMidA" left="10" top="3" width="1" height="1"/>
+            <map var-name="mapAlienKillMidB" left="11" top="3" width="1" height="1"/>
+            <map var-name="mapAlienKillMidC" left="12" top="3" width="1" height="1"/>
+            <map var-name="mapAlienKillFarA" left="13" top="3" width="1" height="1"/>
+            <map var-name="mapAlienKillFarB" left="14" top="3" width="1" height="1"/>
+            <map var-name="mapAlienKillFarC" left="15" top="3" width="1" height="1"/>
         </maps>
     </output>
 </gfx-xform>

@@ -27,6 +27,8 @@ void AlienActivateSingle(Alien *alien, AlienType type, u8 yTarget) {
     u8 direction = yTarget < CENTER_SPRITE_Y ? 0 : 1;
     alien->type = type;
     alien->time = 0;
+    alien->score = 1;
+    alien->killTime = 0;
     alien->active = 1;
 
     MoveSprite(alien->spriteIndex, END_POINT_X, CENTER_SPRITE_Y, 1, 1);
@@ -58,9 +60,34 @@ void AlienFire(Alien *alien) {
 
 }
 
+u8 AlienIsCollidable(Alien *alien) {
+    return alien->active && !alien->killTime;
+}
+
 void AlienUpdate(Alien *alien) {
     if(!alien->active) return;
 
+    // Alien in kill?
+    if(alien->killTime) {
+        switch(alien->killTime) {
+            case 1:
+                MapSprite(alien->spriteIndex, mapAlienKillA[alien->distance]);
+                break;
+            case 4:
+                MapSprite(alien->spriteIndex, mapAlienKillB[alien->distance]);
+                break;
+            case 7:
+                MapSprite(alien->spriteIndex, mapAlienKillC[alien->distance]);
+                break;
+            case 10:
+                AlienDeactivate(alien);
+                return;
+        }
+        alien->killTime++;
+        return;
+    }
+
+    // Standard update
     if(sprites[alien->spriteIndex].x <= 16) {
         AlienDeactivate(alien);
     } else {
@@ -130,6 +157,10 @@ void AlienUpdate(Alien *alien) {
                 break;
         }
     }
+}
+
+void AlienKill(Alien *alien) {
+    alien->killTime = 1;
 }
 
 void AlienDeactivate(Alien *alien) {

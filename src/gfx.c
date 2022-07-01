@@ -31,6 +31,24 @@ const char *mapRightPlayerBullet[] = {
     mapRightPlayerBulletC
 };
 
+const char *mapAlienKillA[] = {
+    mapAlienKillNearA,
+    mapAlienKillMidA,
+    mapAlienKillFarA
+};
+
+const char *mapAlienKillB[] = {
+    mapAlienKillNearB,
+    mapAlienKillMidB,
+    mapAlienKillFarB
+};
+
+const char *mapAlienKillC[] = {
+    mapAlienKillNearC,
+    mapAlienKillMidC,
+    mapAlienKillFarC
+};
+
 //
 
 u8 NextSpriteIndex() {

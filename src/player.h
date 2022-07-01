@@ -21,6 +21,7 @@ void PlayerInitAll();
 void PlayerStart(Player *);
 void PlayerInput(Player *);
 void PlayerFire(Player *);
+void PlayerAddScore(Player *, u8);
 void PlayerUpdateBG(Player *);
 void PlayerUpdate(Player *);
 

@@ -5,12 +5,13 @@ MCU=atmega644
 TARGET=$(GAME).elf
 CC=avr-gcc
 INFO=game.properties
-UZEBIN_DIR=../../uzebox/tools/packrom/
-UZEM_DIR=../../uzebox/tools/uzem/
-GCONVERT_DIR=../../uzebox/tools/gconvert/
+UZE_DIR=../uzebox
+UZEBIN_DIR=$(UZE_DIR)/tools/packrom/
+UZEM_DIR=$(UZE_DIR)/tools/uzem/
+GCONVERT_DIR=$(UZE_DIR)/tools/gconvert/
 
 ## Kernel settings
-KERNEL_DIR = ../../uzebox/kernel
+KERNEL_DIR = $(UZE_DIR)/kernel
 KERNEL_OPTIONS = -DVIDEO_MODE=3 -DINTRO_LOGO=0 -DRESOLUTION_EXT=1 -DVRAM_TILES_H=32 -DMIXER=1
 KERNEL_OPTIONS += -DSCROLLING=0 -DTRANSLUCENT_COLOR=0x00 -DRAM_TILES_COUNT=32 -DMAX_SPRITES=20 -DTRUE_RANDOM_GEN=1
 
@@ -45,10 +46,8 @@ HEX_EEPROM_FLAGS += --change-section-lma .eeprom=0 --no-change-warnings
 
 ## Objects that must be built in order to link
 OBJECTS = uzeboxVideoEngineCore.o uzeboxCore.o uzeboxSoundEngine.o uzeboxSoundEngineCore.o uzeboxVideoEngine.o
-# OBJECTS += sfx.o system.o gfx.o background.o laser.o whipline.o player.o enemy.o
-# OBJECTS += collision.o game.o title.o main.o
 
-OBJECTS += system.o gfx.o bullet.o player.o alien.o
+OBJECTS += system.o gfx.o bullet.o player.o alien.o collision.o
 OBJECTS += main.o
 
 ## Objects explicitly added by the user
@@ -100,10 +99,10 @@ player.o: src/player.c
 
 alien.o: src/alien.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $< -o alien.o
-#
-# collision.o: src/collision.c
-# 	$(CC) $(INCLUDES) $(CFLAGS) -c  $< -o collision.o
-#
+
+collision.o: src/collision.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c  $< -o collision.o
+
 # game.o: src/game.c
 # 	$(CC) $(INCLUDES) $(CFLAGS) -c  $< -o game.o
 #

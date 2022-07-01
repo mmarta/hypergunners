@@ -69,6 +69,11 @@ void PlayerFire(Player *player) {
     }
 }
 
+void PlayerAddScore(Player *player, u8 score) {
+    player->score += score;
+    player->updateScore = 1;
+}
+
 void PlayerUpdateBG(Player *player) {
     if(player->updateScore) {
         PrintU16Vertical(30, 7, player->score, 50000, 1);

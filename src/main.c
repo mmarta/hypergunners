@@ -3,6 +3,7 @@
 #include "gfx.h"
 #include "player.h"
 #include "alien.h"
+#include "collision.h"
 
 int main() {
     u8 i, testTime = 0;
@@ -15,7 +16,7 @@ int main() {
 
     EnableSoundEngine();
 
-    PrintVerticalRAM(31, 0, "BLAHBLAH");
+    //PrintVerticalRAM(31, 0, "BLAHBLAH");
 
     PlayerInitAll();
     AlienInitAll();
@@ -26,6 +27,8 @@ int main() {
     while(1) {
         WaitVsync(1);
         ReadInputs();
+
+        ProcessAlienBulletCollisions();
 
         testTime++;
         if(testTime == 90) {

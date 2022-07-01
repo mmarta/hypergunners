@@ -3,6 +3,8 @@
 
 #include "defines.h"
 
+#define SPRITE_SIZE 8
+
 #define CENTER_SPRITE_Y 108
 
 #define MID_POINT_X 100
@@ -26,6 +28,9 @@ extern const char mapAlienDiverFarLeftA[];
 extern const char mapAlienDiverFarLeftB[];
 extern const char mapAlienDiverFarRightA[];
 extern const char mapAlienDiverFarRightB[];
+extern const char *mapAlienKillA[];
+extern const char *mapAlienKillB[];
+extern const char *mapAlienKillC[];
 
 u8 NextSpriteIndex();
 
