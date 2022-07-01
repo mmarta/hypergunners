@@ -16,8 +16,6 @@ int main() {
 
     EnableSoundEngine();
 
-    //PrintVerticalRAM(31, 0, "BLAHBLAH");
-
     PlayerInitAll();
     AlienInitAll();
 
@@ -31,7 +29,7 @@ int main() {
         ProcessAlienBulletCollisions();
 
         testTime++;
-        if(testTime == 90) {
+        if(testTime == 30) {
             AlienActivate(DIVER, rand() % 216);
             testTime = 0;
         }
