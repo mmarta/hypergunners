@@ -6,10 +6,12 @@ void PlayerBulletInit(PlayerBullet *bullet, u8 playerIndex) {
     MoveSprite(bullet->spriteIndex, 0, 224, 1, 1);
 }
 
-void PlayerBulletActivate(PlayerBullet *bullet, u8 x, u8 y) {
+void PlayerBulletActivate(PlayerBullet *bullet, u8 x, u8 y, PlayerColor color) {
     bullet->active = 1;
     bullet->depthIndex = 0;
-    MapSprite(bullet->spriteIndex, bullet->playerIndex ? mapRightPlayerBullet[0] : mapLeftPlayerBullet[0]);
+    bullet->color = color;
+    bullet->reverse = 0;
+    MapSprite(bullet->spriteIndex, bullet->color == BLACK_BLUE ? mapBluePlayerBulletA : mapRedPlayerBulletA);
     MoveSprite(bullet->spriteIndex, x, y, 1, 1);
 }
 
@@ -28,22 +30,26 @@ void PlayerBulletUpdate(PlayerBullet *bullet) {
         1, 1
     );
 
-    if(sprites[bullet->spriteIndex].x >= FAR_POINT_X && bullet->depthIndex == 1) {
-        bullet->depthIndex = 2;
-        MapSprite(
-            bullet->spriteIndex,
-            bullet->playerIndex
-                ? mapRightPlayerBullet[bullet->depthIndex]
-                : mapLeftPlayerBullet[bullet->depthIndex]
-        );
-    } else if(sprites[bullet->spriteIndex].x >= MID_POINT_X && bullet->depthIndex == 0) {
-        bullet->depthIndex = 1;
-        MapSprite(
-            bullet->spriteIndex,
-            bullet->playerIndex
-                ? mapRightPlayerBullet[bullet->depthIndex]
-                : mapLeftPlayerBullet[bullet->depthIndex]
-        );
+    if(!bullet->reverse) {    
+        
+    } else {
+        if(sprites[bullet->spriteIndex].x >= FAR_POINT_X && bullet->depthIndex == 1) {
+            bullet->depthIndex = 2;
+            MapSprite(
+                bullet->spriteIndex,
+                bullet->color == BLACK_BLUE
+                    ? mapBluePlayerBulletC
+                    : mapRedPlayerBulletC
+            );
+        } else if(sprites[bullet->spriteIndex].x >= MID_POINT_X && bullet->depthIndex == 0) {
+            bullet->depthIndex = 1;
+            MapSprite(
+                bullet->spriteIndex,
+                bullet->color == BLACK_BLUE
+                    ? mapBluePlayerBulletB
+                    : mapRedPlayerBulletB
+            );
+        }
     }
 }
 

@@ -11,15 +11,50 @@
 #define FAR_POINT_X 150
 #define END_POINT_X 180
 
+typedef enum {
+    WHITE_RED,
+    BLACK_BLUE
+} PlayerColor;
+
 extern const char gfxTiles[];
 extern const char gfxSpriteTiles[];
 
 extern u8 spriteIndexCount;
 
-extern const char *mapLeftPlayer[];
-extern const char *mapRightPlayer[];
-extern const char *mapLeftPlayerBullet[];
-extern const char *mapRightPlayerBullet[];
+/**
+ * NOTE:
+ * We cannot organize these maps the way we would like, where we can index them in arrays/pointers of arrays.
+ * There seems to be a problem with addressing them if there are too many of them with the AVR C compiler.
+ * Therefore, we have to keep the maps as individual single-dimesion arrays.
+ */
+
+extern const char mapLeftWhitePlayerStatic[];
+extern const char mapLeftWhitePlayerA[];
+extern const char mapLeftWhitePlayerB[];
+extern const char mapLeftWhitePlayerC[];
+extern const char mapLeftBlackPlayerStatic[];
+extern const char mapLeftBlackPlayerA[];
+extern const char mapLeftBlackPlayerB[];
+extern const char mapLeftBlackPlayerC[];
+
+extern const char mapRightWhitePlayerStatic[];
+extern const char mapRightWhitePlayerA[];
+extern const char mapRightWhitePlayerB[];
+extern const char mapRightWhitePlayerC[];
+extern const char mapRightBlackPlayerStatic[];
+extern const char mapRightBlackPlayerA[];
+extern const char mapRightBlackPlayerB[];
+extern const char mapRightBlackPlayerC[];
+
+extern const char mapRedPlayerBulletA[];
+extern const char mapRedPlayerBulletB[];
+extern const char mapRedPlayerBulletC[];
+extern const char mapBluePlayerBulletA[];
+extern const char mapBluePlayerBulletB[];
+extern const char mapBluePlayerBulletC[];
+extern const char mapReverseBulletA[];
+extern const char mapReverseBulletB[];
+extern const char mapReverseBulletC[];
 
 extern const char mapAlienDiverNear[];
 extern const char mapAlienDiverMid[];
@@ -28,9 +63,32 @@ extern const char mapAlienDiverFarLeftA[];
 extern const char mapAlienDiverFarLeftB[];
 extern const char mapAlienDiverFarRightA[];
 extern const char mapAlienDiverFarRightB[];
-extern const char *mapAlienKillA[];
-extern const char *mapAlienKillB[];
-extern const char *mapAlienKillC[];
+
+extern const char mapAlienDiverWhiteRedNear[];
+extern const char mapAlienDiverWhiteRedMid[];
+extern const char mapAlienDiverWhiteRedFar[];
+extern const char mapAlienDiverWhiteRedFarLeftA[];
+extern const char mapAlienDiverWhiteRedFarLeftB[];
+extern const char mapAlienDiverWhiteRedFarRightA[];
+extern const char mapAlienDiverWhiteRedFarRightB[];
+
+extern const char mapAlienDiverBlackBlueNear[];
+extern const char mapAlienDiverBlackBlueMid[];
+extern const char mapAlienDiverBlackBlueFar[];
+extern const char mapAlienDiverBlackBlueFarLeftA[];
+extern const char mapAlienDiverBlackBlueFarLeftB[];
+extern const char mapAlienDiverBlackBlueFarRightA[];
+extern const char mapAlienDiverBlackBlueFarRightB[];
+
+extern const char mapAlienKillNearA[];
+extern const char mapAlienKillNearB[];
+extern const char mapAlienKillNearC[];
+extern const char mapAlienKillMidA[];
+extern const char mapAlienKillMidB[];
+extern const char mapAlienKillMidC[];
+extern const char mapAlienKillFarA[];
+extern const char mapAlienKillFarB[];
+extern const char mapAlienKillFarC[];
 
 u8 NextSpriteIndex();
 

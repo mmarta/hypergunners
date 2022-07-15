@@ -2,6 +2,10 @@
 
 Player players[PLAYER_COUNT];
 
+void PlayerFire(Player *);
+void PlayerSwitchColor(Player *);
+void PlayerDraw(Player *player);
+
 void PlayerInitAll() {
     u8 i = PLAYER_COUNT, j;
     while(i--) {
@@ -21,8 +25,9 @@ void PlayerStart(Player *player) {
     player->animTime = 0;
     player->score = 0;
     player->updateScore = 1;
+    player->color = WHITE_RED;
 
-    MapSprite(player->spriteIndex, player->index ? mapRightPlayer[0] : mapLeftPlayer[0]);
+    MapSprite(player->spriteIndex, player->index ? mapRightWhitePlayerA : mapLeftWhitePlayerA);
     MoveSprite(player->spriteIndex, 16, CENTER_SPRITE_Y, 1, 1);
 }
 
@@ -53,6 +58,24 @@ void PlayerInput(Player *player) {
     } else if(player->fireButton) {
         player->fireButton = 0;
     }
+
+    if(inputs[player->index] & BTN_B) {
+        if(!player->colorButton) {
+            PlayerSwitchColor(player);
+            player->colorButton = 1;
+        }
+    } else if(player->colorButton) {
+        player->colorButton = 0;
+    }
+}
+
+void PlayerSwitchColor(Player *player) {
+    if(player->color == BLACK_BLUE)
+        player->color = WHITE_RED;
+    else
+        player->color = BLACK_BLUE;
+
+    PlayerDraw(player);
 }
 
 void PlayerFire(Player *player) {
@@ -62,7 +85,8 @@ void PlayerFire(Player *player) {
             PlayerBulletActivate(
                 &player->bullets[i],
                 sprites[player->spriteIndex].x,
-                sprites[player->spriteIndex].y
+                sprites[player->spriteIndex].y,
+                player->color
             );
             return;
         }
@@ -92,14 +116,10 @@ void PlayerUpdate(Player *player) {
 
     switch(player->animTime) {
         case 0:
-            MapSprite(player->spriteIndex, player->index ? mapRightPlayer[0] : mapLeftPlayer[0]);
-            break;
         case 3:
-        case 9:
-            MapSprite(player->spriteIndex, player->index ? mapRightPlayer[1] : mapLeftPlayer[1]);
-            break;
         case 6:
-            MapSprite(player->spriteIndex, player->index ? mapRightPlayer[2] : mapLeftPlayer[2]);
+        case 9:
+            PlayerDraw(player);
             break;
     }
 
@@ -107,4 +127,23 @@ void PlayerUpdate(Player *player) {
     if(player->animTime >= 12) {
         player->animTime = 0;
     }
+}
+
+void PlayerDraw(Player *player) {
+    if(player->color == WHITE_RED) {
+        if(player->animTime < 3)
+            MapSprite(player->spriteIndex, player->index ? mapRightWhitePlayerA : mapLeftWhitePlayerA);
+        else if(player->animTime < 6 || player->animTime >= 9)
+            MapSprite(player->spriteIndex, player->index ? mapRightWhitePlayerB : mapLeftWhitePlayerB);
+        else
+            MapSprite(player->spriteIndex, player->index ? mapRightWhitePlayerC : mapLeftWhitePlayerC);
+    } else {
+        if(player->animTime < 3)
+            MapSprite(player->spriteIndex, player->index ? mapRightBlackPlayerA : mapLeftBlackPlayerA);
+        else if(player->animTime < 6 || player->animTime >= 9)
+            MapSprite(player->spriteIndex, player->index ? mapRightBlackPlayerB : mapLeftBlackPlayerB);
+        else
+            MapSprite(player->spriteIndex, player->index ? mapRightBlackPlayerC : mapLeftBlackPlayerC);
+    }
+    
 }

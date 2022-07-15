@@ -36,21 +36,46 @@ void AlienActivateSingle(Alien *alien, AlienType type, u8 yTarget) {
 
     if(direction) {
         if(sprites[alien->spriteIndex].x == yTarget) {
-            MapSprite(alien->spriteIndex, mapAlienDiverFar);
+            if(alien->type == DIVER)
+                MapSprite(alien->spriteIndex, mapAlienDiverFar);
+            else if(alien->type == DIVER_WHITE_RED)
+                MapSprite(alien->spriteIndex, mapAlienDiverWhiteRedFar);
+            else if(alien->type == DIVER_BLACK_BLUE)
+                MapSprite(alien->spriteIndex, mapAlienDiverBlackBlueFar);
             alien->dirPos = 0;
         } else if(yTarget - sprites[alien->spriteIndex].y < 20) {
-            MapSprite(alien->spriteIndex, mapAlienDiverFarRightB);
+            if(alien->type == DIVER)
+                MapSprite(alien->spriteIndex, mapAlienDiverFarRightB);
+            else if(alien->type == DIVER_WHITE_RED)
+                MapSprite(alien->spriteIndex, mapAlienDiverWhiteRedFarRightB);
+            else if(alien->type == DIVER_BLACK_BLUE)
+                MapSprite(alien->spriteIndex, mapAlienDiverBlackBlueFarRightB);
             alien->dirPos = 1;
         } else {
-            MapSprite(alien->spriteIndex, mapAlienDiverFarRightA);
+            if(alien->type == DIVER)
+                MapSprite(alien->spriteIndex, mapAlienDiverFarRightA);
+            else if(alien->type == DIVER_WHITE_RED)
+                MapSprite(alien->spriteIndex, mapAlienDiverWhiteRedFarRightA);
+            else if(alien->type == DIVER_BLACK_BLUE)
+                MapSprite(alien->spriteIndex, mapAlienDiverBlackBlueFarRightA);
             alien->dirPos = 2;
         }
     } else {
         if(sprites[alien->spriteIndex].y - yTarget < 20) {
-            MapSprite(alien->spriteIndex, mapAlienDiverFarLeftB);
+            if(alien->type == DIVER)
+                MapSprite(alien->spriteIndex, mapAlienDiverFarLeftB);
+            else if(alien->type == DIVER_WHITE_RED)
+                MapSprite(alien->spriteIndex, mapAlienDiverWhiteRedFarLeftB);
+            else if(alien->type == DIVER_BLACK_BLUE)
+                MapSprite(alien->spriteIndex, mapAlienDiverBlackBlueFarLeftB);
             alien->dirPos = -1;
         } else {
-            MapSprite(alien->spriteIndex, mapAlienDiverFarLeftA);
+            if(alien->type == DIVER)
+                MapSprite(alien->spriteIndex, mapAlienDiverFarLeftA);
+            else if(alien->type == DIVER_WHITE_RED)
+                MapSprite(alien->spriteIndex, mapAlienDiverWhiteRedFarLeftA);
+            else if(alien->type == DIVER_BLACK_BLUE)
+                MapSprite(alien->spriteIndex, mapAlienDiverBlackBlueFarLeftA);
             alien->dirPos = -2;
         }
     }
@@ -71,13 +96,28 @@ void AlienUpdate(Alien *alien) {
     if(alien->killTime) {
         switch(alien->killTime) {
             case 1:
-                MapSprite(alien->spriteIndex, mapAlienKillA[alien->distance]);
+                if(alien->distance == 0)
+                    MapSprite(alien->spriteIndex, mapAlienKillNearA);
+                else if(alien->distance == 1)
+                    MapSprite(alien->spriteIndex, mapAlienKillMidA);
+                else if(alien->distance == 2)
+                    MapSprite(alien->spriteIndex, mapAlienKillFarA);
                 break;
             case 4:
-                MapSprite(alien->spriteIndex, mapAlienKillB[alien->distance]);
+                if(alien->distance == 0)
+                    MapSprite(alien->spriteIndex, mapAlienKillNearB);
+                else if(alien->distance == 1)
+                    MapSprite(alien->spriteIndex, mapAlienKillMidB);
+                else if(alien->distance == 2)
+                    MapSprite(alien->spriteIndex, mapAlienKillFarB);
                 break;
             case 7:
-                MapSprite(alien->spriteIndex, mapAlienKillC[alien->distance]);
+                if(alien->distance == 0)
+                    MapSprite(alien->spriteIndex, mapAlienKillNearC);
+                else if(alien->distance == 1)
+                    MapSprite(alien->spriteIndex, mapAlienKillMidC);
+                else if(alien->distance == 2)
+                    MapSprite(alien->spriteIndex, mapAlienKillFarC);
                 break;
             case 10:
                 AlienDeactivate(alien);
@@ -100,7 +140,12 @@ void AlienUpdate(Alien *alien) {
                     1, 1
                 );
                 if(sprites[alien->spriteIndex].y == alien->yTarget) {
-                    MapSprite(alien->spriteIndex, mapAlienDiverFar);
+                    if(alien->type == DIVER)
+                        MapSprite(alien->spriteIndex, mapAlienDiverFar);
+                    else if(alien->type == DIVER_WHITE_RED)
+                        MapSprite(alien->spriteIndex, mapAlienDiverWhiteRedFar);
+                    else if(alien->type == DIVER_BLACK_BLUE)
+                        MapSprite(alien->spriteIndex, mapAlienDiverBlackBlueFar);
                     alien->dirPos = 0;
                 }
                 break;
@@ -112,7 +157,12 @@ void AlienUpdate(Alien *alien) {
                     1, 1
                 );
                 if(alien->yTarget - sprites[alien->spriteIndex].y < 20) {
-                    MapSprite(alien->spriteIndex, mapAlienDiverFarRightB);
+                    if(alien->type == DIVER)
+                        MapSprite(alien->spriteIndex, mapAlienDiverFarRightB);
+                    else if(alien->type == DIVER_WHITE_RED)
+                        MapSprite(alien->spriteIndex, mapAlienDiverWhiteRedFarRightB);
+                    else if(alien->type == DIVER_BLACK_BLUE)
+                        MapSprite(alien->spriteIndex, mapAlienDiverBlackBlueFarRightB);
                     alien->dirPos = 1;
                 }
                 break;
@@ -124,7 +174,12 @@ void AlienUpdate(Alien *alien) {
                     1, 1
                 );
                 if(sprites[alien->spriteIndex].y == alien->yTarget) {
-                    MapSprite(alien->spriteIndex, mapAlienDiverFar);
+                    if(alien->type == DIVER)
+                        MapSprite(alien->spriteIndex, mapAlienDiverFar);
+                    else if(alien->type == DIVER_WHITE_RED)
+                        MapSprite(alien->spriteIndex, mapAlienDiverWhiteRedFar);
+                    else if(alien->type == DIVER_BLACK_BLUE)
+                        MapSprite(alien->spriteIndex, mapAlienDiverBlackBlueFar);
                     alien->dirPos = 0;
                 }
                 break;
@@ -136,7 +191,12 @@ void AlienUpdate(Alien *alien) {
                     1, 1
                 );
                 if(sprites[alien->spriteIndex].y - alien->yTarget < 20) {
-                    MapSprite(alien->spriteIndex, mapAlienDiverFarLeftB);
+                    if(alien->type == DIVER)
+                        MapSprite(alien->spriteIndex, mapAlienDiverFarLeftB);
+                    else if(alien->type == DIVER_WHITE_RED)
+                        MapSprite(alien->spriteIndex, mapAlienDiverWhiteRedFarLeftB);
+                    else if(alien->type == DIVER_BLACK_BLUE)
+                        MapSprite(alien->spriteIndex, mapAlienDiverBlackBlueFarLeftB);
                     alien->dirPos = -1;
                 }
                 break;
@@ -148,10 +208,20 @@ void AlienUpdate(Alien *alien) {
                     1, 1
                 );
                 if(alien->distance == 2 && sprites[alien->spriteIndex].x < FAR_POINT_X) {
-                    MapSprite(alien->spriteIndex, mapAlienDiverMid);
+                    if(alien->type == DIVER)
+                        MapSprite(alien->spriteIndex, mapAlienDiverMid);
+                    else if(alien->type == DIVER_WHITE_RED)
+                        MapSprite(alien->spriteIndex, mapAlienDiverWhiteRedMid);
+                    else if(alien->type == DIVER_BLACK_BLUE)
+                        MapSprite(alien->spriteIndex, mapAlienDiverBlackBlueMid);
                     alien->distance = 1;
                 } else if(alien->distance == 1 && sprites[alien->spriteIndex].x < MID_POINT_X) {
-                    MapSprite(alien->spriteIndex, mapAlienDiverNear);
+                    if(alien->type == DIVER)
+                        MapSprite(alien->spriteIndex, mapAlienDiverNear);
+                    else if(alien->type == DIVER_WHITE_RED)
+                        MapSprite(alien->spriteIndex, mapAlienDiverWhiteRedNear);
+                    else if(alien->type == DIVER_BLACK_BLUE)
+                        MapSprite(alien->spriteIndex, mapAlienDiverBlackBlueNear);
                     alien->distance = 0;
                 }
                 break;

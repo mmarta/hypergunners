@@ -7,50 +7,6 @@
 
 u8 spriteIndexCount = 0;
 
-const char *mapLeftPlayer[] = {
-    mapLeftPlayerA,
-    mapLeftPlayerB,
-    mapLeftPlayerC
-};
-
-const char *mapRightPlayer[] = {
-    mapRightPlayerA,
-    mapRightPlayerB,
-    mapRightPlayerC
-};
-
-const char *mapLeftPlayerBullet[] = {
-    mapLeftPlayerBulletA,
-    mapLeftPlayerBulletB,
-    mapLeftPlayerBulletC
-};
-
-const char *mapRightPlayerBullet[] = {
-    mapRightPlayerBulletA,
-    mapRightPlayerBulletB,
-    mapRightPlayerBulletC
-};
-
-const char *mapAlienKillA[] = {
-    mapAlienKillNearA,
-    mapAlienKillMidA,
-    mapAlienKillFarA
-};
-
-const char *mapAlienKillB[] = {
-    mapAlienKillNearB,
-    mapAlienKillMidB,
-    mapAlienKillFarB
-};
-
-const char *mapAlienKillC[] = {
-    mapAlienKillNearC,
-    mapAlienKillMidC,
-    mapAlienKillFarC
-};
-
-//
-
 u8 NextSpriteIndex() {
     return spriteIndexCount++;
 }

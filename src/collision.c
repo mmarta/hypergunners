@@ -24,8 +24,16 @@ void ProcessAlienBulletCollisions() {
                     && SpriteCollision(&sprites[aliens[i].spriteIndex], &sprites[players[j].bullets[k].spriteIndex])
                 ) {
                     PlayerBulletDeactivate(&players[j].bullets[k]);
-                    AlienKill(&aliens[i]);
-                    PlayerAddScore(&players[j], aliens[i].score);
+                    
+                    // Only do something if the proper colors match
+                    if(
+                        (aliens[i].type == DIVER_WHITE_RED && players[j].bullets[k].color == BLACK_BLUE)
+                        || (aliens[i].type == DIVER_BLACK_BLUE && players[j].bullets[k].color == WHITE_RED)
+                    );
+                    else {
+                        AlienKill(&aliens[i]);
+                        PlayerAddScore(&players[j], aliens[i].score);
+                    }
                 }
             }
         }

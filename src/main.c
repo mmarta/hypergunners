@@ -30,7 +30,7 @@ int main() {
 
         testTime++;
         if(testTime == 30) {
-            AlienActivate(DIVER, rand() % 216);
+            AlienActivate(rand() % 3, rand() % 216);
             testTime = 0;
         }
 

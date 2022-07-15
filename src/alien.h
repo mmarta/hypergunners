@@ -9,7 +9,9 @@
 #define ALIEN_COUNT 6
 
 typedef enum {
-    DIVER
+    DIVER,
+    DIVER_WHITE_RED,
+    DIVER_BLACK_BLUE
 } AlienType;
 
 typedef struct {

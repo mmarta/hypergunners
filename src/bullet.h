@@ -5,11 +5,12 @@
 #include "gfx.h"
 
 typedef struct {
-    u8 active, spriteIndex, playerIndex, depthIndex;
+    u8 active, spriteIndex, playerIndex, depthIndex, reverse;
+    PlayerColor color;
 } PlayerBullet;
 
 void PlayerBulletInit(PlayerBullet *, u8);
-void PlayerBulletActivate(PlayerBullet *, u8, u8);
+void PlayerBulletActivate(PlayerBullet *, u8, u8, PlayerColor);
 void PlayerBulletUpdate(PlayerBullet *);
 void PlayerBulletDeactivate(PlayerBullet *);
 

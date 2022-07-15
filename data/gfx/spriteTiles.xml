@@ -4,22 +4,33 @@
     <output file="data/gfx/spriteTiles.inc">
         <tiles var-name="gfxSpriteTiles" />
         <maps pointers-size="8">
-            <map var-name="mapLeftPlayerStatic" left="0" top="1" width="1" height="1"/>
-            <map var-name="mapLeftPlayerA" left="1" top="1" width="1" height="1"/>
-            <map var-name="mapLeftPlayerB" left="2" top="1" width="1" height="1"/>
-            <map var-name="mapLeftPlayerC" left="3" top="1" width="1" height="1"/>
+            <map var-name="mapLeftWhitePlayerStatic" left="0" top="1" width="1" height="1"/>
+            <map var-name="mapLeftWhitePlayerA" left="1" top="1" width="1" height="1"/>
+            <map var-name="mapLeftWhitePlayerB" left="2" top="1" width="1" height="1"/>
+            <map var-name="mapLeftWhitePlayerC" left="3" top="1" width="1" height="1"/>
+            <map var-name="mapLeftBlackPlayerStatic" left="4" top="1" width="1" height="1"/>
+            <map var-name="mapLeftBlackPlayerA" left="5" top="1" width="1" height="1"/>
+            <map var-name="mapLeftBlackPlayerB" left="6" top="1" width="1" height="1"/>
+            <map var-name="mapLeftBlackPlayerC" left="7" top="1" width="1" height="1"/>
 
-            <map var-name="mapRightPlayerStatic" left="4" top="1" width="1" height="1"/>
-            <map var-name="mapRightPlayerA" left="5" top="1" width="1" height="1"/>
-            <map var-name="mapRightPlayerB" left="6" top="1" width="1" height="1"/>
-            <map var-name="mapRightPlayerC" left="7" top="1" width="1" height="1"/>
+            <map var-name="mapRightWhitePlayerStatic" left="8" top="1" width="1" height="1"/>
+            <map var-name="mapRightWhitePlayerA" left="9" top="1" width="1" height="1"/>
+            <map var-name="mapRightWhitePlayerB" left="10" top="1" width="1" height="1"/>
+            <map var-name="mapRightWhitePlayerC" left="11" top="1" width="1" height="1"/>
+            <map var-name="mapRightBlackPlayerStatic" left="12" top="1" width="1" height="1"/>
+            <map var-name="mapRightBlackPlayerA" left="13" top="1" width="1" height="1"/>
+            <map var-name="mapRightBlackPlayerB" left="14" top="1" width="1" height="1"/>
+            <map var-name="mapRightBlackPlayerC" left="15" top="1" width="1" height="1"/>
 
-            <map var-name="mapLeftPlayerBulletA" left="0" top="2" width="1" height="1"/>
-            <map var-name="mapLeftPlayerBulletB" left="1" top="2" width="1" height="1"/>
-            <map var-name="mapLeftPlayerBulletC" left="2" top="2" width="1" height="1"/>
-            <map var-name="mapRightPlayerBulletA" left="3" top="2" width="1" height="1"/>
-            <map var-name="mapRightPlayerBulletB" left="4" top="2" width="1" height="1"/>
-            <map var-name="mapRightPlayerBulletC" left="5" top="2" width="1" height="1"/>
+            <map var-name="mapRedPlayerBulletA" left="0" top="2" width="1" height="1"/>
+            <map var-name="mapRedPlayerBulletB" left="1" top="2" width="1" height="1"/>
+            <map var-name="mapRedPlayerBulletC" left="2" top="2" width="1" height="1"/>
+            <map var-name="mapBluePlayerBulletA" left="3" top="2" width="1" height="1"/>
+            <map var-name="mapBluePlayerBulletB" left="4" top="2" width="1" height="1"/>
+            <map var-name="mapBluePlayerBulletC" left="5" top="2" width="1" height="1"/>
+            <map var-name="mapReverseBulletA" left="6" top="2" width="1" height="1"/>
+            <map var-name="mapReverseBulletB" left="7" top="2" width="1" height="1"/>
+            <map var-name="mapReverseBulletC" left="8" top="2" width="1" height="1"/>
 
             <map var-name="mapAlienDiverNear" left="0" top="3" width="1" height="1"/>
             <map var-name="mapAlienDiverMid" left="1" top="3" width="1" height="1"/>
@@ -28,16 +39,30 @@
             <map var-name="mapAlienDiverFarLeftB" left="4" top="3" width="1" height="1"/>
             <map var-name="mapAlienDiverFarRightA" left="5" top="3" width="1" height="1"/>
             <map var-name="mapAlienDiverFarRightB" left="6" top="3" width="1" height="1"/>
+            <map var-name="mapAlienDiverWhiteRedNear" left="7" top="3" width="1" height="1"/>
+            <map var-name="mapAlienDiverWhiteRedMid" left="8" top="3" width="1" height="1"/>
+            <map var-name="mapAlienDiverWhiteRedFar" left="9" top="3" width="1" height="1"/>
+            <map var-name="mapAlienDiverWhiteRedFarLeftA" left="10" top="3" width="1" height="1"/>
+            <map var-name="mapAlienDiverWhiteRedFarLeftB" left="11" top="3" width="1" height="1"/>
+            <map var-name="mapAlienDiverWhiteRedFarRightA" left="12" top="3" width="1" height="1"/>
+            <map var-name="mapAlienDiverWhiteRedFarRightB" left="13" top="3" width="1" height="1"/>
+            <map var-name="mapAlienDiverBlackBlueNear" left="14" top="3" width="1" height="1"/>
+            <map var-name="mapAlienDiverBlackBlueMid" left="15" top="3" width="1" height="1"/>
+            <map var-name="mapAlienDiverBlackBlueFar" left="16" top="3" width="1" height="1"/>
+            <map var-name="mapAlienDiverBlackBlueFarLeftA" left="17" top="3" width="1" height="1"/>
+            <map var-name="mapAlienDiverBlackBlueFarLeftB" left="18" top="3" width="1" height="1"/>
+            <map var-name="mapAlienDiverBlackBlueFarRightA" left="19" top="3" width="1" height="1"/>
+            <map var-name="mapAlienDiverBlackBlueFarRightB" left="20" top="3" width="1" height="1"/>
 
-            <map var-name="mapAlienKillNearA" left="7" top="3" width="1" height="1"/>
-            <map var-name="mapAlienKillNearB" left="8" top="3" width="1" height="1"/>
-            <map var-name="mapAlienKillNearC" left="9" top="3" width="1" height="1"/>
-            <map var-name="mapAlienKillMidA" left="10" top="3" width="1" height="1"/>
-            <map var-name="mapAlienKillMidB" left="11" top="3" width="1" height="1"/>
-            <map var-name="mapAlienKillMidC" left="12" top="3" width="1" height="1"/>
-            <map var-name="mapAlienKillFarA" left="13" top="3" width="1" height="1"/>
-            <map var-name="mapAlienKillFarB" left="14" top="3" width="1" height="1"/>
-            <map var-name="mapAlienKillFarC" left="15" top="3" width="1" height="1"/>
+            <map var-name="mapAlienKillNearA" left="21" top="3" width="1" height="1"/>
+            <map var-name="mapAlienKillNearB" left="22" top="3" width="1" height="1"/>
+            <map var-name="mapAlienKillNearC" left="23" top="3" width="1" height="1"/>
+            <map var-name="mapAlienKillMidA" left="24" top="3" width="1" height="1"/>
+            <map var-name="mapAlienKillMidB" left="25" top="3" width="1" height="1"/>
+            <map var-name="mapAlienKillMidC" left="26" top="3" width="1" height="1"/>
+            <map var-name="mapAlienKillFarA" left="27" top="3" width="1" height="1"/>
+            <map var-name="mapAlienKillFarB" left="28" top="3" width="1" height="1"/>
+            <map var-name="mapAlienKillFarC" left="29" top="3" width="1" height="1"/>
         </maps>
     </output>
 </gfx-xform>
