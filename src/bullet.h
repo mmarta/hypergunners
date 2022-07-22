@@ -11,6 +11,7 @@ typedef struct {
 
 void PlayerBulletInit(PlayerBullet *, u8);
 void PlayerBulletActivate(PlayerBullet *, u8, u8, PlayerColor);
+void PlayerBulletReverse(PlayerBullet *);
 void PlayerBulletUpdate(PlayerBullet *);
 void PlayerBulletDeactivate(PlayerBullet *);
 

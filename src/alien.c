@@ -30,6 +30,7 @@ void AlienActivateSingle(Alien *alien, AlienType type, u8 yTarget) {
     alien->score = 1;
     alien->killTime = 0;
     alien->active = 1;
+    alien->pause = 0;
 
     MoveSprite(alien->spriteIndex, END_POINT_X, CENTER_SPRITE_Y, 1, 1);
     alien->distance = 2;
@@ -89,6 +90,10 @@ u8 AlienIsCollidable(Alien *alien) {
     return alien->active && !alien->killTime;
 }
 
+void AlienPause(Alien *alien) {
+    alien->pause = 30;
+}
+
 void AlienUpdate(Alien *alien) {
     if(!alien->active) return;
 
@@ -124,6 +129,11 @@ void AlienUpdate(Alien *alien) {
                 return;
         }
         alien->killTime++;
+        return;
+    }
+
+    if(alien->pause) {
+        alien->pause--;
         return;
     }
 

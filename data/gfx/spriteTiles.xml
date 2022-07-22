@@ -4,6 +4,8 @@
     <output file="data/gfx/spriteTiles.inc">
         <tiles var-name="gfxSpriteTiles" />
         <maps pointers-size="8">
+            <map var-name="mapBlank" left="0" top="0" width="1" height="1"/>
+
             <map var-name="mapLeftWhitePlayerStatic" left="0" top="1" width="1" height="1"/>
             <map var-name="mapLeftWhitePlayerA" left="1" top="1" width="1" height="1"/>
             <map var-name="mapLeftWhitePlayerB" left="2" top="1" width="1" height="1"/>
@@ -21,6 +23,11 @@
             <map var-name="mapRightBlackPlayerA" left="13" top="1" width="1" height="1"/>
             <map var-name="mapRightBlackPlayerB" left="14" top="1" width="1" height="1"/>
             <map var-name="mapRightBlackPlayerC" left="15" top="1" width="1" height="1"/>
+
+            <map var-name="mapPlayerKillA" left="16" top="1" width="1" height="1"/>
+            <map var-name="mapPlayerKillB" left="17" top="1" width="1" height="1"/>
+            <map var-name="mapPlayerKillC" left="18" top="1" width="1" height="1"/>
+            <map var-name="mapPlayerKillD" left="19" top="1" width="1" height="1"/>
 
             <map var-name="mapRedPlayerBulletA" left="0" top="2" width="1" height="1"/>
             <map var-name="mapRedPlayerBulletB" left="1" top="2" width="1" height="1"/>

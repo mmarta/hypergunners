@@ -28,6 +28,8 @@ extern u8 spriteIndexCount;
  * Therefore, we have to keep the maps as individual single-dimesion arrays.
  */
 
+extern const char mapBlank[];
+
 extern const char mapLeftWhitePlayerStatic[];
 extern const char mapLeftWhitePlayerA[];
 extern const char mapLeftWhitePlayerB[];
@@ -45,6 +47,11 @@ extern const char mapRightBlackPlayerStatic[];
 extern const char mapRightBlackPlayerA[];
 extern const char mapRightBlackPlayerB[];
 extern const char mapRightBlackPlayerC[];
+
+extern const char mapPlayerKillA[];
+extern const char mapPlayerKillB[];
+extern const char mapPlayerKillC[];
+extern const char mapPlayerKillD[];
 
 extern const char mapRedPlayerBulletA[];
 extern const char mapRedPlayerBulletB[];

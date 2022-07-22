@@ -25,14 +25,19 @@ void PlayerStart(Player *player) {
     player->animTime = 0;
     player->score = 0;
     player->updateScore = 1;
+    player->killTime = 0;
     player->color = WHITE_RED;
 
     MapSprite(player->spriteIndex, player->index ? mapRightWhitePlayerA : mapLeftWhitePlayerA);
     MoveSprite(player->spriteIndex, 16, CENTER_SPRITE_Y, 1, 1);
 }
 
+u8 PlayerIsCollidable(Player *player) {
+    return player->active && !player->killTime;
+}
+
 void PlayerInput(Player *player) {
-    if(!player->active) return;
+    if(!player->active || (player->killTime > 0 && player->killTime < 100)) return;
     
     if(inputs[player->index] & BTN_LEFT) {
         MoveSprite(
@@ -98,6 +103,10 @@ void PlayerAddScore(Player *player, u8 score) {
     player->updateScore = 1;
 }
 
+void PlayerKill(Player *player) {
+    player->killTime = 1;
+}
+
 void PlayerUpdateBG(Player *player) {
     if(player->updateScore) {
         PrintU16Vertical(30, player->index ? 27 : 7, player->score, 50000, 1);
@@ -114,13 +123,38 @@ void PlayerUpdate(Player *player) {
 
     if(!player->active) return;
 
-    switch(player->animTime) {
-        case 0:
-        case 3:
-        case 6:
-        case 9:
-            PlayerDraw(player);
-            break;
+    if(player->killTime) {
+        // Kill time animation
+        if(player->killTime <= 13) {
+            switch(player->killTime) {
+                case 1:
+                case 4:
+                case 7:
+                case 10:
+                case 13:
+                    PlayerDraw(player);
+            }
+        } else if(player->killTime >= 100) {
+            if(player->killTime % 4 == 0 || player->killTime % 4 == 2)
+                PlayerDraw(player);
+        } else if(player->killTime == 220)
+            player->killTime = 0;
+        
+        if(player->killTime)
+            player->killTime++;
+        
+        if(player->killTime < 100)
+            return;
+    } else {
+        // Non-kill animation
+        switch(player->animTime) {
+            case 0:
+            case 3:
+            case 6:
+            case 9:
+                PlayerDraw(player);
+                break;
+        }
     }
 
     player->animTime++;
@@ -130,6 +164,29 @@ void PlayerUpdate(Player *player) {
 }
 
 void PlayerDraw(Player *player) {
+    switch(player->killTime) {
+        case 1:
+            MapSprite(player->spriteIndex, mapPlayerKillA);
+            return;
+        case 4:
+            MapSprite(player->spriteIndex, mapPlayerKillB);
+            return;
+        case 7:
+            MapSprite(player->spriteIndex, mapPlayerKillC);
+            return;
+        case 10:
+            MapSprite(player->spriteIndex, mapPlayerKillD);
+            return;
+        case 13:
+            MapSprite(player->spriteIndex, mapBlank);
+            return;
+    }
+
+    if(player->killTime >= 100 && player->killTime % 4 == 0) {
+        MapSprite(player->spriteIndex, mapBlank);
+        return;
+    }
+
     if(player->color == WHITE_RED) {
         if(player->animTime < 3)
             MapSprite(player->spriteIndex, player->index ? mapRightWhitePlayerA : mapLeftWhitePlayerA);

@@ -10,7 +10,7 @@
 #define PLAYER_BULLET_COUNT 2
 
 typedef struct {
-    u8 index, active, animTime, updateScore, spriteIndex, fireButton, colorButton;
+    u8 index, active, animTime, killTime, updateScore, spriteIndex, fireButton, colorButton;
     u16 score;
     PlayerBullet bullets[PLAYER_BULLET_COUNT];
     PlayerColor color;
@@ -20,9 +20,11 @@ extern Player players[];
 
 void PlayerInitAll();
 void PlayerStart(Player *);
+u8 PlayerIsCollidable(Player *);
 void PlayerInput(Player *);
 void PlayerAddScore(Player *, u8);
 void PlayerUpdateBG(Player *);
+void PlayerKill(Player *);
 void PlayerUpdate(Player *);
 
 #endif

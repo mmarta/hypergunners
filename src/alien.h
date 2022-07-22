@@ -15,7 +15,7 @@ typedef enum {
 } AlienType;
 
 typedef struct {
-    u8 active, animTime, killTime, spriteIndex, score, time, yTarget, distance;
+    u8 active, animTime, killTime, spriteIndex, score, time, yTarget, distance, pause;
     char dirPos;
     AlienType type;
 } Alien;
@@ -26,6 +26,7 @@ void AlienInitAll();
 void AlienActivate(AlienType, u8);
 void AlienFire(Alien *);
 u8 AlienIsCollidable(Alien *);
+void AlienPause(Alien *);
 void AlienUpdate(Alien *);
 void AlienKill(Alien *);
 void AlienDeactivate(Alien *);

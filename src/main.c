@@ -26,7 +26,10 @@ int main() {
         WaitVsync(1);
         ReadInputs();
 
+        // All collisions
         ProcessAlienBulletCollisions();
+        ProcessPlayerBulletCollisions();
+        ProcessPlayerAlienCollisions();
 
         testTime++;
         if(testTime == 30) {

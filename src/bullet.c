@@ -15,6 +15,17 @@ void PlayerBulletActivate(PlayerBullet *bullet, u8 x, u8 y, PlayerColor color) {
     MoveSprite(bullet->spriteIndex, x, y, 1, 1);
 }
 
+void PlayerBulletReverse(PlayerBullet *bullet) {
+    bullet->reverse = 15;
+    if(bullet->depthIndex == 2) {
+        MapSprite(bullet->spriteIndex, mapReverseBulletC);
+    } else if(bullet->depthIndex == 1) {
+        MapSprite(bullet->spriteIndex, mapReverseBulletB);
+    } else {
+        MapSprite(bullet->spriteIndex, mapReverseBulletA);
+    }
+}
+
 void PlayerBulletUpdate(PlayerBullet *bullet) {
     if(!bullet->active) return;
 
@@ -23,16 +34,34 @@ void PlayerBulletUpdate(PlayerBullet *bullet) {
         return;
     }
 
-    MoveSprite(
-        bullet->spriteIndex,
-        sprites[bullet->spriteIndex].x + 4,
-        sprites[bullet->spriteIndex].y,
-        1, 1
-    );
+    if(bullet->reverse) {
+        if(bullet->reverse > 1) {
+            bullet->reverse--;
+            return;
+        }
 
-    if(!bullet->reverse) {    
+        MoveSprite(
+            bullet->spriteIndex,
+            sprites[bullet->spriteIndex].x - 4,
+            sprites[bullet->spriteIndex].y,
+            1, 1
+        );
         
+        if(sprites[bullet->spriteIndex].x < FAR_POINT_X && bullet->depthIndex == 2) {
+            bullet->depthIndex = 1;
+            MapSprite(bullet->spriteIndex, mapReverseBulletB);
+        } else if(sprites[bullet->spriteIndex].x < MID_POINT_X && bullet->depthIndex == 1) {
+            bullet->depthIndex = 0;
+            MapSprite(bullet->spriteIndex, mapReverseBulletA);
+        }
     } else {
+        MoveSprite(
+            bullet->spriteIndex,
+            sprites[bullet->spriteIndex].x + 4,
+            sprites[bullet->spriteIndex].y,
+            1, 1
+        );
+
         if(sprites[bullet->spriteIndex].x >= FAR_POINT_X && bullet->depthIndex == 1) {
             bullet->depthIndex = 2;
             MapSprite(

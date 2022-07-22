@@ -8,5 +8,7 @@
 
 u8 SpriteCollision(struct SpriteStruct *, struct SpriteStruct *);
 void ProcessAlienBulletCollisions();
+void ProcessPlayerBulletCollisions();
+void ProcessPlayerAlienCollisions();
 
 #endif
